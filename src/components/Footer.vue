@@ -81,6 +81,10 @@
 </template>
 
 <script setup>
+defineOptions({
+    name: 'AppFooter'
+})
+
 import { onMounted } from 'vue'
 import { initGlobalRevealAnimations } from '@/composables/useReveal.js'
 

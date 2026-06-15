@@ -203,7 +203,7 @@ async function handleSubmit() {
     } else {
       await authStore.login(email.value, password.value)
     }
-  } catch (e) {
+  } catch {
     // error already set in store
   } finally {
     isSubmitting.value = false
