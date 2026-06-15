@@ -1,12 +1,11 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-resonanz fixed-top">
+    <nav ref="navbarEl" class="navbar navbar-expand-lg navbar-dark navbar-resonanz fixed-top">
         <div class="container">
             <router-link class="navbar-brand d-flex align-items-center gap-2" to="/">
                 <i class="bi bi-music-note-beamed text-gold fs-3"></i>
                 <div>
                     <span class="fw-bold fs-4" style="font-family: 'Playfair Display', serif;">RESONANZ</span>
-                    <small class="d-block text-gold" style="font-size: 0.65rem; letter-spacing: 3px;">MUSIC
-                        STUDIO</small>
+                    <small class="d-block text-gold brand-subtitle">MUSIC STUDIO</small>
                 </div>
             </router-link>
 
@@ -34,10 +33,28 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
-                    <li class="nav-item ms-lg-2">
-                        <router-link class="btn btn-gold btn-sm" to="/dashboard">
-                            <i class="bi bi-grid-3x3-gap me-2"></i>Dashboard
+                    <li v-if="!authStore.isAuthenticated" class="nav-item ms-lg-2">
+                        <router-link class="btn btn-outline-gold btn-sm" to="/auth">
+                            <i class="bi bi-person me-2"></i>Login / Register
                         </router-link>
+                    </li>
+                    <li v-else class="nav-item dropdown ms-lg-2">
+                        <a class="btn btn-gold btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle me-2"></i>{{ authStore.user?.email }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-resonanz">
+                            <li>
+                                <router-link class="dropdown-item" to="/dashboard">
+                                    <i class="bi bi-grid-3x3-gap me-2"></i>Dashboard
+                                </router-link>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item text-danger" href="#" @click.prevent="handleLogout">
+                                    <i class="bi bi-box-arrow-right me-2"></i>Logout
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -46,10 +63,25 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useAuthStore } from '@/stores/auth.js'
+
+const authStore = useAuthStore()
+const navbarEl = ref(null)
+
+function onScroll() {
+    const navbar = navbarEl.value
+    if (!navbar) return
+    if (window.scrollY > 60) {
+        navbar.classList.add('navbar-scrolled')
+    } else {
+        navbar.classList.remove('navbar-scrolled')
+    }
+}
 
 onMounted(() => {
-    // Close mobile menu on link click
+    window.addEventListener('scroll', onScroll, { passive: true })
+
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
             const navbar = document.querySelector('.navbar-collapse')
@@ -59,4 +91,25 @@ onMounted(() => {
         })
     })
 })
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', onScroll)
+})
+
+async function handleLogout() {
+    await authStore.logout()
+}
 </script>
+
+<style scoped>
+.brand-subtitle {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    transition: all 0.4s ease;
+}
+
+.navbar-scrolled .brand-subtitle {
+    font-size: 0.6rem;
+    letter-spacing: 2.5px;
+}
+</style>
