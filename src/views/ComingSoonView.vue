@@ -43,9 +43,9 @@ const displayName = computed(() => displayNameMap[props.organization] || props.o
     min-height: 100vh;
     padding: 8rem 1.5rem 4rem;
     background:
-        radial-gradient(circle at 20% 20%, rgba(201, 162, 39, 0.12), transparent 32%),
-        radial-gradient(circle at 80% 10%, rgba(233, 69, 96, 0.12), transparent 28%),
-        linear-gradient(160deg, #f5f5f7 0%, #ffffff 55%, #f5f5f7 100%);
+        radial-gradient(circle at 20% 20%, rgba(223, 205, 109, 0.12), transparent 32%),
+        radial-gradient(circle at 80% 10%, rgba(177, 148, 38, 0.12), transparent 28%),
+        linear-gradient(160deg, #f2ece6 0%, #ffffff 55%, #f2ece6 100%);
 }
 
 .coming-soon-section {
@@ -61,8 +61,8 @@ const displayName = computed(() => displayNameMap[props.organization] || props.o
     padding: 3.5rem 2.5rem;
     border-radius: 32px;
     background: rgba(255, 255, 255, 0.88);
-    border: 1px solid rgba(201, 162, 39, 0.16);
-    box-shadow: 0 24px 70px rgba(26, 26, 46, 0.12);
+    border: 1px solid rgba(223, 205, 109, 0.16);
+    box-shadow: 0 24px 70px rgba(63, 3, 3, 0.12);
     backdrop-filter: blur(18px);
 }
 
@@ -74,9 +74,9 @@ const displayName = computed(() => displayNameMap[props.organization] || props.o
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: #1a1a2e;
-    background: linear-gradient(135deg, #c9a227, #e9c84a);
-    box-shadow: 0 18px 40px rgba(201, 162, 39, 0.28);
+    color: #3f0303;
+    background: linear-gradient(135deg, #b19426, #dfcd6d);
+    box-shadow: 0 18px 40px rgba(177, 148, 38, 0.28);
     font-size: 2.4rem;
 }
 
@@ -84,8 +84,8 @@ const displayName = computed(() => displayNameMap[props.organization] || props.o
     display: inline-flex;
     padding: 0.45rem 0.9rem;
     border-radius: 999px;
-    color: #e94560;
-    background: rgba(233, 69, 96, 0.1);
+    color: #b19426;
+    background: rgba(177, 148, 38, 0.1);
     font-size: 0.78rem;
     font-weight: 800;
     letter-spacing: 0.18em;
@@ -94,14 +94,14 @@ const displayName = computed(() => displayNameMap[props.organization] || props.o
 
 .coming-soon-card h1 {
     margin: 1.15rem 0 0.9rem;
-    color: #1a1a2e;
+    color: #3f0303;
     font-family: 'Playfair Display', serif;
 }
 
 .coming-soon-card p {
     margin: 0 auto 2rem;
     max-width: 520px;
-    color: rgba(26, 26, 46, 0.68);
+    color: rgba(63, 3, 3, 0.68);
     line-height: 1.8;
 }
 

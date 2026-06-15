@@ -130,14 +130,14 @@ async function handleLogout() {
     justify-content: center;
     margin-right: 0.5rem;
     color: #fff;
-    background: rgba(201, 162, 39, 0.14);
-    border: 1px solid rgba(201, 162, 39, 0.22);
+    background: rgba(223, 205, 109, 0.14);
+    border: 1px solid rgba(223, 205, 109, 0.22);
     transition: all 0.25s ease;
 }
 
 .sidebar-toggle:hover {
-    color: #1a1a2e;
-    background: linear-gradient(135deg, #c9a227, #e9c84a);
+    color: #3f0303;
+    background: linear-gradient(135deg, #b19426, #dfcd6d);
     border-color: transparent;
 }
 </style>

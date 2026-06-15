@@ -79,7 +79,7 @@
                         <div class="d-flex flex-column gap-3">
                             <div v-for="i in 5" :key="i" class="d-flex gap-3 align-items-start">
                                 <div class="rounded-circle flex-shrink-0 d-flex align-items-center justify-content-center text-white"
-                                    style="width: 36px; height: 36px; background: linear-gradient(135deg, #1a1a2e, #e94560);">
+                                    style="width: 36px; height: 36px; background: linear-gradient(135deg, #3f0303, #b19426);">
                                     <i class="bi bi-person small"></i>
                                 </div>
                                 <div>
@@ -140,7 +140,7 @@
                                 <div class="d-flex align-items-end gap-2 justify-content-center" style="height: 120px;">
                                     <div v-for="h in [40, 65, 45, 80, 55, 90, 70, 85, 60, 95, 75, 88]" :key="h"
                                         class="rounded-top"
-                                        style="width: 20px; background: linear-gradient(to top, #1a1a2e, #e94560);"
+                                        style="width: 20px; background: linear-gradient(to top, #3f0303, #b19426);"
                                         :style="{ height: h + '%', opacity: 0.7 + (h / 300) }"></div>
                                 </div>
                                 <div class="d-flex justify-content-between mt-2 text-muted small">

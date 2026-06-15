@@ -78,9 +78,9 @@ onMounted(() => {
   color: #6c757d;
 
   &:hover {
-    border-color: #1a1a2e;
-    color: #1a1a2e;
-    background: rgba(26, 26, 46, 0.04);
+    border-color: #3f0303;
+    color: #3f0303;
+    background: rgba(63, 3, 3, 0.04);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   }
@@ -95,11 +95,11 @@ onMounted(() => {
   transition: all 0.3s ease;
 
   &:hover {
-    background: #1a1a2e;
-    border-color: #1a1a2e;
+    background: #3f0303;
+    border-color: #3f0303;
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(26, 26, 46, 0.2);
+    box-shadow: 0 6px 20px rgba(63, 3, 3, 0.2);
   }
 }
 </style>

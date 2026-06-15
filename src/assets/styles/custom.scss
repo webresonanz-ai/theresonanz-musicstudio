@@ -1,13 +1,22 @@
 @use "sass:color";
 
+// Resonanz Fonts
+@font-face {
+  font-family: 'Arapey';
+  src: url('/src/assets/fonts/Arapey-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 // Resonanz Brand Colors
-$primary: #1a1a2e;
-$secondary: #16213e;
-$accent: #e94560;
-$gold: #c9a227;
-$gold-light: #e9c84a;
-$light: #f5f5f7;
-$dark: #0f0f23;
+$primary: #3f0303;
+$secondary: #6b0f1a;
+$accent: #dfcd6d;
+$gold: #b19426;
+$gold-light: #f2ece6;
+$light: #f2ece6;
+$dark: #0f0505;
 
 // Typography
 $font-heading: 'Playfair Display', serif;
@@ -271,7 +280,7 @@ html {
 // ==================== NAVBAR ====================
 
 .navbar-resonanz {
-  background: rgba(26, 26, 46, 0.88) !important;
+  background: rgba(63, 3, 3, 0.88) !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -279,7 +288,7 @@ html {
   padding-bottom: 1.1rem;
 
   &.navbar-scrolled {
-    background: rgba(26, 26, 46, 0.96) !important;
+    background: rgba(63, 3, 3, 0.96) !important;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
@@ -333,7 +342,7 @@ html {
 
 .hero-section {
   min-height: 100vh;
-  background: linear-gradient(160deg, $primary 0%, $secondary 60%, #0d1b3e 100%);
+  background: linear-gradient(160deg, $primary 0%, $secondary 60%, #4a0505 100%);
   position: relative;
   overflow: hidden;
 
@@ -356,7 +365,7 @@ html {
     width: 600px;
     height: 600px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(201, 162, 39, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(223, 205, 109, 0.08) 0%, transparent 70%);
     pointer-events: none;
     animation: floatUp 12s ease-in-out infinite;
   }
@@ -368,7 +377,7 @@ html {
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(233, 69, 96, 0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(177, 148, 38, 0.06) 0%, transparent 70%);
     pointer-events: none;
     animation: floatDown 15s ease-in-out infinite;
   }
@@ -380,7 +389,7 @@ html {
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(201, 162, 39, 0.04) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(223, 205, 109, 0.04) 0%, transparent 70%);
     pointer-events: none;
     animation: floatUp 10s ease-in-out infinite reverse;
   }
@@ -543,7 +552,7 @@ html {
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(26, 26, 46, 0.35);
+    box-shadow: 0 16px 40px rgba(63, 3, 3, 0.35);
 
     &::after {
       transform: scale(1.5);
@@ -651,7 +660,7 @@ html {
   .gallery-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(26, 26, 46, 0.2) 0%, rgba(15, 15, 35, 0.75) 100%);
+    background: linear-gradient(180deg, rgba(63, 3, 3, 0.2) 0%, rgba(15, 5, 5, 0.75) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1000,7 +1009,7 @@ html {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-  background: rgba(26, 26, 46, 0.98);
+  background: rgba(63, 3, 3, 0.98);
   backdrop-filter: blur(20px);
 
   .dropdown-item {

@@ -15,12 +15,21 @@
         </div>
 
         <nav class="sidebar-nav" aria-label="Organization sidebar">
-            <router-link v-for="item in organizations" :key="item.name" custom :to="item.path" v-slot="{ href, isActive, navigate }">
-                <a class="sidebar-link" :class="{ active: isActive }" :href="href" @click="handleNavigate(navigate)">
-                    <i :class="item.icon"></i>
-                    <span>{{ item.name }}</span>
-                </a>
-            </router-link>
+            <div class="sidebar-menu-item">
+                <button class="sidebar-link menu-toggle" @click="trmsExpanded = !trmsExpanded">
+                    <i class="bi bi-house-door-fill"></i>
+                    <span>TRMS</span>
+                    <i class="bi menu-indicator" :class="trmsExpanded ? 'bi-chevron-down' : 'bi-chevron-right'"></i>
+                </button>
+                <div class="submenu" :class="{ expanded: trmsExpanded }">
+                    <router-link v-for="item in trmsSubmenu" :key="item.name" custom :to="item.path" v-slot="{ href, isActive, navigate }">
+                        <a class="sidebar-link submenu-link" :class="{ active: isActive }" :href="href" @click="handleNavigate(navigate)">
+                            <i :class="item.icon"></i>
+                            <span>{{ item.name }}</span>
+                        </a>
+                    </router-link>
+                </div>
+            </div>
         </nav>
 
         <div class="sidebar-footer">
@@ -31,7 +40,7 @@
 </template>
 
 <script setup>
-import { onUnmounted, watch } from 'vue'
+import { onUnmounted, watch, ref } from 'vue'
 
 defineOptions({
     name: 'OrganizationSidebar'
@@ -46,27 +55,16 @@ const props = defineProps({
 
 const emit = defineEmits(['close-sidebar'])
 
-const organizations = [
-    {
-        name: 'TRMS',
-        path: '/',
-        icon: 'bi bi-house-door-fill'
-    },
-    {
-        name: 'BMS',
-        path: '/organizations/bms',
-        icon: 'bi bi-diagram-3'
-    },
-    {
-        name: 'TRCC',
-        path: '/organizations/trcc',
-        icon: 'bi bi-music-note-list'
-    },
-    {
-        name: 'JCO',
-        path: '/organizations/jco',
-        icon: 'bi bi-people'
-    }
+const trmsExpanded = ref(true)
+
+const trmsSubmenu = [
+    { name: 'Profile', path: '/trms/profile', icon: 'bi bi-person' },
+    { name: 'Course', path: '/trms/course', icon: 'bi bi-book' },
+    { name: 'Course Fee', path: '/trms/course-fee', icon: 'bi bi-cash-stack' },
+    { name: 'Course Schedule', path: '/trms/course-schedule', icon: 'bi bi-calendar-week' },
+    { name: 'Teachers', path: '/trms/teachers', icon: 'bi bi-mortarboard' },
+    { name: 'News', path: '/trms/news', icon: 'bi bi-newspaper' },
+    { name: 'Contact', path: '/trms/contact', icon: 'bi bi-envelope' }
 ]
 
 function handleNavigate(navigate) {
@@ -101,9 +99,9 @@ onUnmounted(() => {
     width: var(--sidebar-width);
     height: 100vh;
     overflow-y: auto;
-    background: linear-gradient(180deg, #1a1a2e 0%, #10152f 100%);
+    background: linear-gradient(180deg, #3f0303 0%, #6b0f1a 100%);
     color: rgba(255, 255, 255, 0.82);
-    border-right: 1px solid rgba(201, 162, 39, 0.18);
+    border-right: 1px solid rgba(223, 205, 109, 0.18);
     box-shadow: 12px 0 40px rgba(0, 0, 0, 0.22);
     display: flex;
     flex-direction: column;
@@ -120,7 +118,7 @@ onUnmounted(() => {
     align-items: center;
     gap: 0.9rem;
     padding: 1rem 0.75rem 1.25rem;
-    border-bottom: 1px solid rgba(201, 162, 39, 0.16);
+    border-bottom: 1px solid rgba(223, 205, 109, 0.16);
 }
 
 .sidebar-brand i {
@@ -130,8 +128,8 @@ onUnmounted(() => {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: rgba(201, 162, 39, 0.14);
-    color: #e9c84a;
+    background: rgba(223, 205, 109, 0.14);
+    color: #dfcd6d;
     font-size: 1.5rem;
 }
 
@@ -172,7 +170,7 @@ onUnmounted(() => {
 
 .sidebar-link {
     display: grid;
-    grid-template-columns: 38px 1fr;
+    grid-template-columns: 38px 1fr auto;
     align-items: center;
     gap: 0.75rem;
     padding: 0.8rem 0.85rem;
@@ -188,7 +186,7 @@ onUnmounted(() => {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(201, 162, 39, 0.16), rgba(233, 69, 96, 0.06));
+    background: linear-gradient(135deg, rgba(177, 148, 38, 0.16), rgba(63, 3, 3, 0.06));
     opacity: 0;
     transition: opacity 0.25s ease;
 }
@@ -230,9 +228,45 @@ onUnmounted(() => {
 }
 
 .sidebar-link.active i {
-    background: linear-gradient(135deg, #c9a227, #e9c84a);
-    color: #1a1a2e;
-    box-shadow: 0 10px 24px rgba(201, 162, 39, 0.24);
+    background: linear-gradient(135deg, #b19426, #dfcd6d);
+    color: #3f0303;
+    box-shadow: 0 10px 24px rgba(177, 148, 38, 0.24);
+}
+
+.menu-toggle {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: none;
+    text-align: left;
+}
+
+.menu-indicator {
+    margin-left: auto;
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+.submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding-left: 38px;
+}
+
+.submenu.expanded {
+    max-height: 500px;
+}
+
+.submenu-link {
+    padding: 0.6rem 0.85rem 0.6rem 0;
+    font-size: 0.9rem;
+}
+
+.submenu-link i {
+    width: 30px;
+    height: 30px;
+    font-size: 0.95rem;
 }
 
 .sidebar-footer {
@@ -242,12 +276,12 @@ onUnmounted(() => {
     align-items: center;
     gap: 0.75rem;
     color: rgba(255, 255, 255, 0.5);
-    border-top: 1px solid rgba(201, 162, 39, 0.14);
+    border-top: 1px solid rgba(223, 205, 109, 0.14);
     font-size: 0.82rem;
 }
 
 .sidebar-footer i {
-    color: #e9c84a;
+    color: #dfcd6d;
 }
 
 @media (max-width: 992px) {

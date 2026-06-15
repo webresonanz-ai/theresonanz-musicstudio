@@ -17,15 +17,50 @@ const router = createRouter({
       component: AuthView
     },
     {
-        path: '/organizations/:organization',
-        name: 'organization',
-        component: ComingSoonView,
-        props: true
+      path: '/organizations/:organization',
+      name: 'organization',
+      component: ComingSoonView,
+      props: true
     },
     {
-        path: '/dashboard',
+      path: '/dashboard',
       name: 'dashboard',
       component: () => import('../views/DashboardView.vue')
+    },
+    {
+      path: '/trms/profile',
+      name: 'trms-profile',
+      component: () => import('../views/TRMSProfileView.vue')
+    },
+    {
+      path: '/trms/course',
+      name: 'trms-course',
+      component: () => import('../views/TRMSCourseView.vue')
+    },
+    {
+      path: '/trms/course-fee',
+      name: 'trms-course-fee',
+      component: () => import('../views/TRMSCourseFeeView.vue')
+    },
+    {
+      path: '/trms/course-schedule',
+      name: 'trms-course-schedule',
+      component: () => import('../views/TRMSCourseScheduleView.vue')
+    },
+    {
+      path: '/trms/teachers',
+      name: 'trms-teachers',
+      component: () => import('../views/TRMSTeachersView.vue')
+    },
+    {
+      path: '/trms/news',
+      name: 'trms-news',
+      component: () => import('../views/TRMSNewsView.vue')
+    },
+    {
+      path: '/trms/contact',
+      name: 'trms-contact',
+      component: () => import('../views/TRMSContactView.vue')
     }
   ],
   scrollBehavior(to, from, savedPosition) {
